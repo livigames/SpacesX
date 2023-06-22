@@ -11,7 +11,13 @@ Prefabs,
 Basic AI behaviour,
 Effects,
 UI System,
-
+| Unity API Reference | Collisions |
+|--------|--------|
+| User Input | Creating different power-ups |
+|--------|--------|
+| Yazı 1 | Yazı 2 |
+|--------|--------|
+| Yazı 3 | Yazı 4 |
 
 ![image](https://github.com/livigames/SpacesX/assets/136366570/f6a6f474-213d-4074-b383-38a127634905)
 
