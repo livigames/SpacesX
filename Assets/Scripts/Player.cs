@@ -218,6 +218,7 @@ public class Player : MonoBehaviour
     {
         score += points;
         uiManager.UpdateScore(score);
+        uiManager.CheckForBestScore();
     }
     //communicate for update score
 }

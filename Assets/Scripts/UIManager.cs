@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Text scoreText;
+    [SerializeField] Text scoreText, bestText;
     [SerializeField] Text gameOver;
     [SerializeField] Text restartLevel, quitGame;
     [SerializeField] private Image livesImages;
     [SerializeField] private Sprite[] livesSprite;
 
     GameManager gameManager;
+
+    public int currentScore;
+    public int bestScore;
 
     void Start()
     {
@@ -21,6 +24,9 @@ public class UIManager : MonoBehaviour
         restartLevel.gameObject.SetActive(false);
         quitGame.gameObject.SetActive(false);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        bestScore = PlayerPrefs.GetInt("HighScore", 0); // load best score
+        bestText.text = "Best: " + bestScore;
     }
 
     void Update()
@@ -30,7 +36,19 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore(int playerScore)
     {
-        scoreText.text = "Score: " + playerScore.ToString(); 
+        currentScore += 10;
+        scoreText.text = "Score: " + currentScore; 
+        
+    }
+
+    public void CheckForBestScore()
+    {
+        if(currentScore > bestScore)
+        {
+            bestScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", bestScore);  // save best score date
+            bestText.text = "Best :" + bestScore;
+        }
     }
 
     public void UpdateLives(int currentLives)
